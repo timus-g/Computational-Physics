@@ -1,0 +1,80 @@
+template:
+1-------------------------------------------------
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="styles.css" /> 
+        <title>Computational Physics</title>
+    </head>
+<body>
+
+<div class="header">
+    <div class="side-nav">
+        <div class="subject">
+            <h2>Computational Physics</h2>
+            <p>January 2023</p>
+        </div>
+        <ul>
+            <li><a href="index.html" class="links"><p>Welcome</p></a></li>
+            <li><a href="assignment1.html" class="links"><p>Assignment 1</p></a></li>
+            <li><a href="assignment2.html" class="links"><p>Assignment 2</p></a></li>
+            <li><a href="assignment3.html" class="links"><p>Assignment 3</p></a></li>
+            <li><a href="assignment4.html" class="links"><p>Assignment 4</p></a></li>
+            <li><a href="assignment5.html" class="links"><p>Assignment 5</p></a></li>
+        </ul>
+        <ul>
+            <li><a href="https://timus-g.github.io/" target="_blank" rel="noopener" class="links"><p>SUMIT GHOSH</p></a></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+----------------------------------------------------------------------
+
+<!-- assignment1.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style>
+        /* Additional styles for Assignment 1 */
+        body {
+            background-color: #f5f5f5;
+        }
+    
+        #assignment-details {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: white;
+        }
+    </style>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Assignment 1 - Computational Physics Course</title>
+</head>
+<body>
+    <header>
+        <!-- Include navigation or go back link if needed -->
+        <a href="index.html">&lt; Back to Assignments</a>
+    </header>
+
+    <section id="assignment-details">
+        <h2>Assignment 1</h2>
+        <p>Description of Assignment 1 goes here.</p>
+        <!-- Include additional details, instructions, resources, etc. -->
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Computational Physics Course</p>
+    </footer>
+</body>
+</html>
