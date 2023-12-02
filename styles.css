@@ -10,7 +10,7 @@
     height: 100vh;
     padding-top: 50px;
     padding-left: 400px;
-    background-color: grey;
+    background-color: whitesmoke;
    /* background-image: url(images/background.png); */
     background-position: center;
     background-size: cover;
@@ -24,7 +24,7 @@
     bottom: 20px;
     padding: 30px 15px;
     border-radius: 10px;
-    background: rgba(236, 193, 229, 0.2);
+    background: rgba(246, 79, 218, 0.2);
     backdrop-filter: blur(5x);
     display: flex;
     justify-content: space-between;
