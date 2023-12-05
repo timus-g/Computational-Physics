@@ -84,7 +84,44 @@ the screen.
                 end do
             end program random_numbers
         </code></pre>
-    </div>   
+    </div>
+
+    <div class="problem">
+        <h3>
+            Generate random numbers such that they are either +1 or -1. Calculate the sum of such
+10000 random nos. Plot the distribution of 10000 such sums in dist_sum_random_walk.pdf.
+The remaining plots hereafter should also be in dist_sum_random_walk.pdf
+        </h3>
+    </div>
+    <div class="fortran-code">
+        <pre><code class="language-fortran">
+            program random_walk
+                implicit none
+                integer :: i,j,seed,sum,random_number
+                real*8:: random_value,excluded_num
+                excluded_num = 0.050
+                open(unit=1, file="dist_sum_random_walk.csv", action = "write")
+                call srand(seed)
+                do i = 1, 10000
+                seed = i
+                sum = 0
+                    do j = 1, 10000
+                        do
+                            random_value = rand()
+                            if (random_value .ne. excluded_num) exit
+                        end do
+                        if (random_value < 0.5d0) then
+                            random_number = -1
+                        else 
+                            random_number = 1
+                        end if
+                    sum = sum + random_number        
+                    end do
+                    write(1,*)sum
+                end do  
+            end program random_walk
+        </code></pre>
+    </div>
 </div>
 
 <script src="prism.js"></script>
