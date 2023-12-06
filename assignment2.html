@@ -38,22 +38,96 @@
     <div class="problem">
         <h3>1.a. By trapezoidal method calculate \(\int_{a}^{b} x^2 \,dx \). We know the answer will be π.</h3>
     </div>
+    <div class="fortran-code">
+        <pre><code class="language-fortran">
+            program trapz_pi
+                !Program to evaluate I = 4*Int_0_1 dx/(1+x^2)
+                implicit none
+                integer :: n,i
+                !n: no. of grid points
+                !i: counter
+                real*8 :: a,b,h,func,x,fa,fb,trap_sum
+                !a: lowerlimit of the integral
+                !b: upper limit of the integral
+                !h: bin size
+                !func: function which evaluates the value of the function at a given value of x
+                !fa: value of the fuction at a
+                !fb: value of the function at b
+                !trap_sum: value of integral is stored
+                write(*,*)' '
+                write(*,*)"Program to evaluate I = Int_0_1 (4/(1+x^2))dx - by trapezoidal method"
+                !write(*,*)"Enter the value of grid number (n)"
+                !read(*,*)n
+                
+                !write(*,*)"Enter the lower limit of the integral"
+                !read(*,*)a
+                !write(*,*)"Enter the upper limit of the integral"
+                !read(*,*)b
+                write(*,*)' '
+                n = 1000000
+                a = 0.0d0
+                b = 1.0d0
+                h=(b-a)/real(n)
+                
+                fa=func(a)/2.0d0
+                fb=func(b)/2.0d0
+                
+                trap_sum=0.0d0
+                
+                do i = 1,n-1
+                x=a+h*i
+                trap_sum=trap_sum+func(x)
+                end do
+                
+                trap_sum=(trap_sum+fa+fb)*h
+                
+                write(*,*)"Value of the integral = ", trap_sum
+                write(*,*)' '
+                end program trapz_pi
+                
+                real*8 function func(x)
+                !evaluates f(x)=4.0d0/(1+x^2)
+                implicit none
+                real*8 :: x
+                func = 4.0d0/(1.0d0+x*x)
+                end function
+        </code></pre>
+    </div>
+
     <div class="problem">
         <h3>1.b. Choose dx =0.01d0, 0.001d0, 0.0001d0, 0.00001d0 (you need to use double precision
             real*8). Does the error go as \(1 \over n^2\), n is the number of intervals as mentioned in lectures?
             Do a log-log plot of error versus n, fit a straight line in log-log plot, and confirm for yourself
             that the slope is 2.</h3>
     </div>
+    <div class="fortran-code">
+        <pre><code class="language-fortran">
+
+        </code></pre>
+    </div>
+    
     <div class="problem">
         <h3>1.c. Change the integrand function to sin(x) between 0 and π (double precision). The value of π
             is generated in fortran as 2*asin(1) (=pi). Choose suitable values of dx and convince yourself
             that integration scheme works.</h3>
     </div>
+    <div class="fortran-code">
+        <pre><code class="language-fortran">
+
+        </code></pre>
+    </div>
+
     <div class="problem">
-        <h3>1.d. Now take a normalized Gaussian function  with standard deviation
+        <h3>1.d. Now take a normalized Gaussian function \(f(x)\) = \(1 \over \sqrt{2π}\) \(e^{x^2 \over 2}\) with standard deviation
             (SD=1). Integrate between -3 and +3. What value do you expect to get? Does your answer
             match?</h3>
     </div>
+    <div class="fortran-code">
+        <pre><code class="language-fortran">
+
+        </code></pre>
+    </div>
+
     <div class="problem">
         <h3>2. Use a random number generator which generates uniform random numbers between 0
             and 1.</h3>
@@ -72,8 +146,18 @@
     <div class="problem">
         <h3>2.d. Calculate the standard deviation (SD) of the random numbers about the mean.</h3>
     </div>
-    <div class="problem"></div>
-    <div class="problem"></div>
+    <div class="problem">
+        <h3>3. Generate random numbers with (a) exponential \(e^{-2x}\) and (b) Gaussian (with SD=2)
+            distributions.</h3>
+    </div>
+    <div class="problem">
+        <h3>Write a program that computes the following multi-dimensional integral using the (a)
+            brute force and (b) importance sampling Monte Carlo integration methods: 
+            
+            Suppose you do not know the exact value of the integral. How do you compute the error?
+            Compare the efficiency of the two methods.
+        </h3>
+    </div>
     <div class="problem"></div>
     <div class="problem"></div>
 </div>
