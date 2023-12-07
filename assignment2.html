@@ -102,7 +102,62 @@
     </div>
     <div class="fortran-code">
         <pre><code class="language-fortran">
+            program trapz_pi_auto
+                !Program to evaluate I = 4*Int_0_1 dx/(1+x^2)
+                implicit none
+                integer :: n,i
+                !n: no. of grid points
+                !i: counter
+                real*8 :: a,b,h,func,x,fa,fb,trap_sum,error,pi
+                !a: lowerlimit of the integral
+                !b: upper limit of the integral
+                !h: bin size
+                !func: function which evaluates the value of the function at a given value of x
+                !fa: value of the fuction at a
+                !fb: value of the function at b
+                !trap_sum: value of integral is stored
+                
+                open(unit=1, file='trap_pi.dat')
 
+                !write(*,*)"Enter the lower limit of the integral"
+                !read(*,*)a
+                !write(*,*)"Enter the upper limit of the integral"
+                !read(*,*)b
+
+                !or
+
+                n = 1; a = 0.0d0; b = 1.0d0; pi=2*asin(1.0d0)
+                
+                do
+                h=(b-a)/real(n)
+                
+                fa=func(a)/2.0d0
+                fb=func(b)/2.0d0
+                
+                trap_sum=0.0d0
+                
+                do i = 1,n-1
+                x=a+h*i
+                trap_sum=trap_sum+func(x)
+                end do
+                
+                n=n*10
+                    
+                trap_sum=(trap_sum+fa+fb)*h
+                
+                error=(pi-trap_sum)
+                !  write(7,*) log(real(h)),",",dlog(error),",",trap_sum  
+                write(1,*)n,",",trap_sum,",",error
+                if (n .ge. 10000000) exit
+                end do
+            end program trapz_pi_auto
+                
+            real*8 function func(x)
+                !evaluates f(x)=4.0d0/(1+x^2)
+                implicit none
+                real*8 :: x
+                func = 4.0d0/(1.0d0+x*x)
+            end function
         </code></pre>
     </div>
     
@@ -113,7 +168,56 @@
     </div>
     <div class="fortran-code">
         <pre><code class="language-fortran">
-
+            program trapz_sin_auto
+                !Program to evaluate I = Int_0_pi sin(x)
+                implicit none
+                integer :: n,i
+                !n: no. of grid points
+                !i: counter
+                real*8 :: a,b,h,func,x,fa,fb,trap_sum,error
+                !a: lowerlimit of the integral
+                !b: upper limit of the integral
+                !h: bin size
+                !func: function which evaluates the value of the function at a given value of x
+                !fa: value of the fuction at a
+                !fb: value of the function at b
+                !trap_sum: value of integral is stored
+                
+                open(unit=1, file='trap_sinx.dat')
+                
+                n=10; a=0.0d0; b=2*asin(1.0d0)
+                
+                do
+                h=(b-a)/real(n)
+                
+                fa=func(a)/2.0d0
+                fb=func(b)/2.0d0
+                
+                trap_sum=0.0d0
+                
+                do i = 1,n-1
+                x=a+h*i
+                trap_sum=trap_sum+func(x)
+                end do   
+                trap_sum=(trap_sum+fa+fb)*h
+                
+                error=(2.0d0-trap_sum)
+                !  write(7,*) log(real(h)),",",dlog(error),",",trap_sum 
+                
+                write(1,*)h,",",trap_sum ,",",error
+                if (n .ge. 1000000) exit
+                
+                n=n*10
+                
+                end do
+            end program trapz_sin_auto
+                
+            real*8 function func(x)
+                !evaluates f(x)=sin(x)
+                implicit none
+                real*8 :: x
+                func = sin(x)
+            end function
         </code></pre>
     </div>
 
@@ -124,7 +228,54 @@
     </div>
     <div class="fortran-code">
         <pre><code class="language-fortran">
+            program trapz_sin_auto
+                !Program to evaluate I = gauss(x)
+                implicit none
+                integer :: n,i
+                !n: no. of grid points
+                !i: counter
+                real*8 :: a,b,h,func,x,fa,fb,trap_sum
+                !a: lowerlimit of the integral
+                !b: upper limit of the integral
+                !h: bin size
+                !func: function which evaluates the value of the function at a given value of x
+                !fa: value of the fuction at a
+                !fb: value of the function at b
+                !trap_sum: value of integral is stored
+                
+                open(unit=1, file='trap_gauss.dat')
 
+                n = 1; a=-3.0d0; b=3.0d0
+                
+                do
+                h=(b-a)/real(n)
+                
+                fa=func(a)/2.0d0
+                fb=func(b)/2.0d0
+                
+                trap_sum=0.0d0
+                
+                do i = 1,n-1
+                x=a+h*i
+                trap_sum=trap_sum+func(x)
+                end do
+                
+                n=n*10
+                    
+                trap_sum=(trap_sum+fa+fb)*h
+
+                !  write(7,*) log(real(h)),",",dlog(error),",",trap_sum  
+                write(1,*)n,",",trap_sum
+                if (n .ge. 1000000) exit
+                end do
+            end program trapz_sin_auto
+                
+            real*8 function func(x)
+                !evaluates f(x)=gauss(x)
+                implicit none
+                real*8 :: x
+                func = (1/sqrt(2*2*asin(1.0d0)))*exp(-x*x/2)
+            end function
         </code></pre>
     </div>
 
